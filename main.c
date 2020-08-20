@@ -38,6 +38,7 @@ void alrSales() {
     /* l means they picked list,
     yorn stands for yes or no*/
     char choice3lyorn;
+    char choice3lread[255];
 
         printf("Would you like too (A)dd, (L)ist, or (R)emove sales?\n");
         scanf("%s", &choice3);
@@ -61,16 +62,19 @@ void alrSales() {
                 switch (choice3lyorn)
                     {
                     case 'y' :
-                        /* code */
+                        FILE * fpointer = fopen("database-sales.txt", "r");
+                        fgets(choice3lread, 255, fpointer);
+                        fclose(fpointer);
                         break;
                         
                     case 'n' :
-                        /* code */
+                        return 0;
                         break;
                     
                     default :
                         printf("Invalid Choice. Please try again.\n");
                         return 0;
+                        break;
                     }
 
             break;
