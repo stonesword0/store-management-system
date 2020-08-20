@@ -13,13 +13,13 @@ int main() {
     
     if(choice1 == 1) {
         printf("Would you like to (A)dd, (R)emove, or (l)ist products?\n");
-        scanf("%c", &choice2);
-        printf("%c", choice2);
+        scanf("%s", &choice2);
+        printf("%s", choice2);
     }
     else if(choice1 == 2) {
         printf("Would you like too (A)dd, (L)ist, or (R)emove sales?\n");
-        scanf("%c", &choice3);
-        printf("%c", choice3);
+        scanf("%s", &choice3);
+        printf("%s", choice3);
     }
     else{
         printf("Invalid Choice. Please try again.\n");
