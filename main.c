@@ -64,7 +64,7 @@ void alrSales() {
                         /* code */
                         break;
                         
-                        case 'y' :
+                    case 'n' :
                         /* code */
                         break;
                     
