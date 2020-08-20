@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+void alrProducts();
+void alrSales();
 int main() {
     int choice1;
     char choice2;
@@ -19,11 +20,27 @@ int main() {
     
     switch(choice1){
     case 1 :
-        printf("Would you like to (A)dd, (R)emove, or (l)ist products?\n");
-        scanf("%s", &choice2);
+        alrProducts();
         break;
     case 2 :
-        printf("Would you like too (A)dd, (L)ist, or (R)emove sales?\n");
+        alrSales();
+        break;
+    default :
+        printf("Invalid Choice. Please try again.\n");
+    }
+    return 0;
+}
+
+void alrSales() {
+    char choice3;
+     /* A stands for Add, id stands for sale id */
+    char choice3aid[255];
+    /* PID stands for Product id */
+    char choice3apid[255];
+    /* SA stands for sold amount */
+    char choice3asa[255];
+
+            printf("Would you like too (A)dd, (L)ist, or (R)emove sales?\n");
         scanf("%s", &choice3);
             switch (choice3)
             {
@@ -32,16 +49,18 @@ int main() {
                 scanf("%s", &choice3aid);
                 printf("What is the product that you sold id?\n(if you dont know, list the produts and look for the right product's id)\n");
                 scanf("%s", &choice3apid);
-                printf("How many products did you sell?");
+                printf("How many of the product did you sell?");
+                scanf("%s", &choice3asa);
                 break;
-            
-            default :
-                printf("Invalid Choice. Please try again.\n");
-            }
-        break;
-    default :
-        printf("Invalid Choice. Please try again.\n");
-    }
+
+}
+
+void alrProducts(){
+
+
+} 
+    
+
 
     /* The old if statement (here for future use if needed) */
 
@@ -60,6 +79,3 @@ int main() {
         printf("Invalid Choice. Please try again.\n");
     }
     */
-
-    return 0;
-}
