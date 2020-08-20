@@ -64,6 +64,7 @@ void alrSales() {
                     case 'y' :
                         FILE * fpointer = fopen("database-sales.txt", "r");
                         fgets(choice3lread, 255, fpointer);
+                        printf("%s", choice3lread);
                         fclose(fpointer);
                         break;
                         
