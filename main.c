@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 void alrProducts();
 void alrSales();
+int printfile();
+
 int main() {
     int choice1;
     char choice2;
     char choice3;
     printf("Store Management System\n\nWhat would you like to do?\n1.Add/Remove/list Product(s)\n2.Add/List/Remove Sales\n");
     scanf("%d", &choice1);
-
     
-    switch(choice1){
+    switch(choice1) {
     case 1 :
         alrProducts();
         break;
@@ -42,8 +44,7 @@ void alrSales() {
 
         printf("Would you like too (A)dd, (L)ist, or (R)emove sales?\n");
         scanf("%s", &choice3);
-            switch (choice3)
-            {
+            switch (choice3) {
             case 'a' :
                 printf("What would you like the ID of the sale you are adding going to be?\n(if you dont know, list the sales list and look for the greatest ID and add 1.)\n");
                 scanf("%s", &choice3asid);
@@ -51,38 +52,28 @@ void alrSales() {
                 scanf("%s", &choice3apid);
                 printf("How many of the product did you sell?\n");
                 scanf("%s", &choice3asa);
-                FILE * fpointer = fopen("database-sales.txt", "a");
-                fprintf(fpointer, "Sale No.%s - Product ID No.%s - Amount Sold No.%s\n", &choice3asid, &choice3apid, &choice3asa);
+                FILE * fpointer = fopen("database-sales.csv", "a");
+                fprintf(fpointer, "%s,%s,%s\n", &choice3asid, &choice3apid, &choice3asa);
                 fclose(fpointer);
             break;
 
             case 'l' :
-                printf("This will print the ENTIRE sales database. Are you sure you want to continue? (y/n)");
+                printf("This will print the ENTIRE sales database. Are you sure you want to continue? [y/n]");
                 scanf("%s", &choice3lyorn);
-                switch (choice3lyorn)
-                    {
+                switch (choice3lyorn) {
                     case 'y' :
-                        FILE * fpointer = fopen("database-sales.txt", "r");
-                        fgets(choice3lread, 255, fpointer);
-                        printf("%s", choice3lread);
-                        fclose(fpointer);
+                        printfile("database-sales.csv");
                         break;
-                        
                     case 'n' :
-                        return 0;
                         break;
-                    
-                    default :
-                        printf("Invalid Choice. Please try again.\n");
-                        return 0;
-                        break;
+                    default :;
+                    printf("Invalid Command. Please Try again.");
                     }
 
             break;
 
             default :
                 printf("Invalid Choice. Please try again.\n");
-                return 0;
             break;
             }
 
@@ -90,11 +81,94 @@ void alrSales() {
                 
 
 void alrProducts(){
+    char choice4;
+     /* a means when they picked add,
+     pid stands for prouduct id */
+    char choice4apid[255];
+    /* a means when they picked add,
+    p stands for price */
+    char choice4ap[255];
+    /* a means when they picked add,
+    n stands for name */
+    char choice4an[255];
+    /* l means they picked list,
+    yorn stands for yes or no*/
+    char choice4lyorn;
+    char choice3lredad[255];
 
+    printf("Would you like too (A)dd, (L)ist, or (R)emove products?\n");
+        scanf("%s", &choice4);
+            switch (choice4)
+            {
+            case 'a' :
+                printf("What would you like the ID of the product you are adding going to be?\n(if you dont know, list the product list and look for the greatest ID and add 1.)\n");
+                scanf("%s", &choice4apid);
+                printf("What is the price of the product?\n(Exculuding $, £, ect)\n");
+                scanf("%s", &choice4ap);
+                printf("What is the name of the product?\n(no spaces, 255 character limit)\n");
+                scanf("%s", &choice4an);
+                FILE * fpointer = fopen("database-products.csv", "a");
+                fprintf(fpointer, "%s,%s,%s\n", &choice4apid, &choice4ap, &choice4an);
+                fclose(fpointer);
+                break;
+
+            case 'l' :
+                printf("This will print the ENTIRE sales database. Are you sure you want to continue? [y/n]");
+                scanf("%s", &choice4lyorn);
+                switch (choice4lyorn) {
+                    case 'y' :
+                        printfile("database-products.csv");
+                        break;
+                    case 'n' :
+                        break;
+                    default :;
+                    printf("Invalid Command. Please Try again.");
+                    }
+                
+                }
 
 }
+
+int printfile(const char *filename) {
+    int i;
+    FILE *fp = fopen(filename, "r");
+    char buf[1024];
+
+    i = 1;
+    while (fgets(buf, 1024, fp)) {
+        printf("Line %d: %s", i, buf);
+        i++;
+    }
+
+    fclose(fp);
+
+    return 0;
+}
+
     
 
+
+/* backup 
+
+    if (!fp) {
+        printf("Can't open file\n");
+        return 1;
+    }
+
+    char buf[255];
+    int i;
+
+    FILE * fpointer = fopen(filename, "r");
+    i = 1; 
+    while (fgets(buf, sizeof(buf), fpointer) != NULL) {
+        printf("Line %d: %s", i, buf);
+        i++;
+    }
+    fclose(fpointer);
+
+    return 0;
+
+    */
 
     /* The old if statement (here for future use if needed) */
 
