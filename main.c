@@ -21,7 +21,7 @@ int main() {
         break;
     default :
         printf("Invalid Choice. Please try again.\n");
-        return 0;
+        return 1;
     }
     return 0;
 }
@@ -42,7 +42,7 @@ void alrSales() {
     char choice3lyorn;
     char choice3lread[255];
 
-        printf("Would you like too (A)dd, (L)ist, or (R)emove sales?\n");
+        printf("Would you like too (A)dd or (L)ist sales?\n");
         scanf("%s", &choice3);
             switch (choice3) {
             case 'a' :
@@ -96,7 +96,7 @@ void alrProducts(){
     char choice4lyorn;
     char choice3lredad[255];
 
-    printf("Would you like too (A)dd, (L)ist, or (R)emove products?\n");
+    printf("Would you like too (A)dd or (L)ist prouducts?\n");
         scanf("%s", &choice4);
             switch (choice4)
             {
@@ -113,7 +113,7 @@ void alrProducts(){
                 break;
 
             case 'l' :
-                printf("This will print the ENTIRE sales database. Are you sure you want to continue? [y/n]");
+                printf("This will print the ENTIRE products database. Are you sure you want to continue? [y/n]");
                 scanf("%s", &choice4lyorn);
                 switch (choice4lyorn) {
                     case 'y' :
@@ -121,22 +121,26 @@ void alrProducts(){
                         break;
                     case 'n' :
                         break;
+                    
+                    
                     default :;
                     printf("Invalid Command. Please Try again.");
+                    break;
+                    
                     }
                 
                 }
 
 }
 
-int printfile(const char *filename) {
+int printfile(char *filename) {
     int i;
     FILE *fp = fopen(filename, "r");
     char buf[1024];
 
     i = 1;
     while (fgets(buf, 1024, fp)) {
-        printf("Line %d: %s", i, buf);
+        printf("L%d: %s", i, buf);
         i++;
     }
 
@@ -145,7 +149,7 @@ int printfile(const char *filename) {
     return 0;
 }
 
-    
+
 
 
 /* backup 
